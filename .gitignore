@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+*.csv
+urlchecker.iml
+urlchecker
+main
