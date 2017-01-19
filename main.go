@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	app := cli.App("cub", "Checks urls from a 'csv' FILE and write to a DEST") // Utilization of mow.cli for creating a CLI app
+	app := cli.App("urlchecker", "Checks urls from a 'csv' FILE and write to a DEST") // Utilization of mow.cli for creating a CLI app
 	app.Version("v version", "0.0.1")
 
 	var (
@@ -64,8 +64,8 @@ func application(srcUrl string, destUrl string, verbose bool) {
 func writeToFile(responses chan string, destUrl string, wg *sync.WaitGroup) {
 	// Takes the WaitGroup and a channel as parameters
 	destFile, err := os.Create(destUrl)
-	defer destFile.Sync()        // We will sync and
-	defer destFile.Close()       // close the file at the end
+	defer destFile.Close()       // close the file
+	defer destFile.Sync()        // We will sync
 
 	if err != nil {
 		log.Fatal(err)
